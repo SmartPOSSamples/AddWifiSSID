@@ -1,0 +1,2 @@
+rootProject.name = "AddWifiSSID"
+include ':app'
