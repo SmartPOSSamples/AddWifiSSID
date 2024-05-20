@@ -4,10 +4,7 @@ package com.smartpos.addwifissid;
  * create by rf.w 19-4-12下午5:52
  */
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
@@ -15,10 +12,7 @@ import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.WifiLock;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -41,6 +35,7 @@ public class WifiAdmin {
             mWifiManager.setWifiEnabled(true);
         }
     }
+
     public void closeWifi() {
         if (mWifiManager.isWifiEnabled()) {
             mWifiManager.setWifiEnabled(false);
@@ -117,8 +112,6 @@ public class WifiAdmin {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < mWifiList.size(); i++) {
             stringBuilder.append("Index_").append(Integer.valueOf(i + 1).toString()).append(":");
-            // 将ScanResult信息转换成一个字符串包
-            // 其中把包括：BSSID、SSID、capabilities、frequency、level
             stringBuilder.append((mWifiList.get(i)).toString());
         }
         return stringBuilder;
@@ -153,18 +146,18 @@ public class WifiAdmin {
         return enableNetwork;
     }
 
-    // disconnectWifi
-    public void disconnectWifi(int netId) {
-        Logger.debug("disconnectWifi =" + netId);
-        mWifiManager.disableNetwork(netId);
-        mWifiManager.disconnect();
-    }
-
     // removeWifi
     public void removeWifi(int netId) {
         Logger.debug("removeWifi =" + netId);
         disconnectWifi(netId);
 //        mWifiManager.forget(netId, null);
+    }
+
+    // disconnectWifi
+    public void disconnectWifi(int netId) {
+        Logger.debug("disconnectWifi =" + netId);
+        mWifiManager.disableNetwork(netId);
+        mWifiManager.disconnect();
     }
 
     public void removeNetwork(WifiConfiguration tempConfig) {

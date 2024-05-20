@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        WifiNetworkSuggestion suggestion1 = null,suggestion2 = null,suggestion3 = null;
+        WifiNetworkSuggestion suggestion1 = null, suggestion2 = null, suggestion3 = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
             suggestion1 = new WifiNetworkSuggestion.Builder()
                     .setSsid("test111111")

@@ -13,13 +13,9 @@ import android.util.Log;
 //Jeff add@20220215 for redmine#23877 to add default AP
 public class SetWifiInfoBootBroadcastReceiver extends BroadcastReceiver {
     private WifiManager wifiManager;
-//    private WifiTracker mWifiTracker;
+    //    private WifiTracker mWifiTracker;
     private String ACTION = "android.intent.action.BOOT_COMPLETED";
     private String TAG = "SetWifiInfoBootBroadcastReceiver";
-
-    public enum WifiCipherType {
-        WIFICIPHER_WEP, WIFICIPHER_WPA, WIFICIPHER_NOPASS, WIFICIPHER_INVALID
-    }
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -100,5 +96,9 @@ public class SetWifiInfoBootBroadcastReceiver extends BroadcastReceiver {
             }
         }
         return true;
+    }
+
+    public enum WifiCipherType {
+        WIFICIPHER_WEP, WIFICIPHER_WPA, WIFICIPHER_NOPASS, WIFICIPHER_INVALID
     }
 }
